@@ -15,8 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV PATH="/root/.local/bin:$PATH"
 
-COPY ./pyproject.toml ./poetry.lock* /tmp/
 WORKDIR /app
+
+COPY ./pyproject.toml ./poetry.lock* /app/
 
 RUN poetry config virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi \
